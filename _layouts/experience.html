@@ -1,0 +1,85 @@
+---
+layout: wrapper
+active: yir
+---
+
+<script language="javascript">
+
+    function make_bottom_images_correct_widths()
+    {
+        var bottom_images = document.getElementsByClassName('bottom_image');
+        var w = (document.getElementById('text_div').offsetWidth * 0.8) / bottom_images.length; 
+        for (i = 0; i < bottom_images.length; i++){
+            bottom_images[i].style.width = w + "px"
+        }
+    }
+
+    function make_images_correct_heights()
+    {
+        var sideBarImages = document.getElementsByClassName('side_bar');
+        var h = (document.getElementById('text_div').offsetHeight * 0.95) / sideBarImages.length; 
+        for (i = 0; i < sideBarImages.length; i++){
+            sideBarImages[i].style.height = h
+        }
+    }
+
+    // window.onload = (event) => {
+    //     make_bottom_images_correct_widths()
+    //     make_images_correct_heights()
+    // }
+
+    // window.onresize = (event) => {
+    //     console.log(window.innerWidth, window.innerHeight, document.getElementById('container').offsetWidth)
+        
+    // }
+    // document.onresize = (event) => {
+
+    //     console.log(document.height)
+    // }
+</script>
+
+<style>
+    .div_text
+    { 
+        height:min-content;
+        flex: 5;  
+    }
+    .div_image
+    { 
+        flex:2;     
+    }
+    .side_bar{
+        height: 100px; 
+        width:auto;
+        padding: 0.5rem 0rem 0.5rem 1rem;
+    }
+    .bottom_image{
+        display: inline-block;
+        padding: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    .centered{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .img-test{
+        width: 50%;
+    }
+
+    .padding-sm{
+        padding: 8px;
+    }
+</style>
+
+<div id='container' style="width: 100%;">
+    <h1>{{page.title}}</h1>
+    <hr><br>
+    <!-- format image to have vertical padding so its not right on bottom -->
+    <div style="display: block; width: 100%;" >
+        {{ content }}
+    </div>
+</div>

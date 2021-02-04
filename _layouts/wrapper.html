@@ -1,0 +1,102 @@
+<html>
+    <script language="javascript">
+
+        function make_bottom_images_correct_widths()
+        {
+            var bottom_images = document.getElementsByClassName('bottom_image');
+            var w = (document.getElementById('text_div').offsetWidth * 0.8) / bottom_images.length; 
+            for (i = 0; i < bottom_images.length; i++){
+                bottom_images[i].style.width = w + "px"
+            }
+        }
+
+        function make_images_correct_heights()
+        {
+            var sideBarImages = document.getElementsByClassName('side_bar');
+            var h = (document.getElementById('text_div').offsetHeight * 0.95) / sideBarImages.length; 
+            for (i = 0; i < sideBarImages.length; i++){
+                sideBarImages[i].style.height = h
+            }
+        }
+
+        function change_flex_on_screen_change() 
+        {   
+            if (window.innerWidth < 1200){
+                var buffers = document.getElementsByClassName('buffer');
+                for (i = 0; i < buffers.length; i++){
+                    buffers[i].style.flex = 0
+                }
+                console.log('in')
+            }
+            else {
+                var buffers = document.getElementsByClassName('buffer');
+                for (i = 0; i < buffers.length; i++){
+                    buffers[i].style.flex = 1
+                }
+            }
+        }
+
+        function change_side_bar_height()
+        {
+            document.getElementById('side-bar-container').style.height = window.innerHeight + "px";
+        }
+        window.onresize = (event) => {
+            change_side_bar_height()
+            change_flex_on_screen_change()
+            make_bottom_images_correct_widths()
+            make_images_correct_heights() 
+        }
+        window.onload = (event) => {
+            change_side_bar_height()
+            change_flex_on_screen_change() 
+            make_bottom_images_correct_widths()
+            make_images_correct_heights() 
+        }
+    </script>
+    <style>
+        .sidebar{
+            flex: 1;
+        }
+        .buffer{
+            flex: 1;
+        }
+        .main-content{
+            flex: 4;
+            padding: 3rem 0 0 0;
+            width: 100%;
+        }
+        body{
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+        p, h1, h2, h3{
+            color: lightgrey;
+            /* font-family: "Monaco", "Courier New", monospace; */
+            font-family: Geneva,Tahoma,Verdana,sans-serif; 
+        }
+        p{
+            font-size: large;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{site.title}}</title>
+    </head>
+    <body style="background-color: #121212;">
+        <div style="display:flex;">
+            <div class="sidebar">
+                {% include header.html active=page.active %}
+            </div>
+            <div class="buffer">
+            </div>
+            <div class="main-content">
+                {{content}}
+            </div>
+            <div class="buffer">
+            </div>
+        </div>
+    </body>
+</html>

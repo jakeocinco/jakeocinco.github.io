@@ -1,0 +1,16 @@
+---
+layout: wrapper
+author: "Jake"
+---
+
+
+<h1> This is a post<h1>
+<h3> {{page.title}}</h3>
+<h3> {{layout.author}}</h3>
+
+<!-- <p>{{ content }}</p> -->
+
+{% for cont in content%}
+    <p> {{cont}}</p>
+    <hr><br>
+{% endfor %}

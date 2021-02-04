@@ -1,0 +1,48 @@
+
+<script language="javascript">
+    function make_equal_heights()
+    {
+        document.getElementById('img_div').style.height = (document.getElementById('text_div').offsetHeight) + "px";  
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        make_equal_heights()
+    }, false);
+</script>
+
+<style>
+    .div_text
+    { 
+        height:min-content;
+        flex: {{include.text_flex}}     
+    }
+    .div_image
+    { 
+        /* height:100%; */
+        flex:{{include.img_flex}};     
+
+    }
+    .user_text{
+        font-size: 22px;
+    }
+    img{
+        max-height:300px; 
+        min-height:150px; 
+        height: 30%; 
+        width:auto;
+        padding: 0.5rem 0rem 0.5rem 1rem;
+    }
+</style>
+
+
+<!-- format image to have vertical padding so its not right on bottom -->
+<div style="display: block;" >
+    <div style="display:flex;">
+        <div id="text_div" class="div_text">
+            <p class="user_text">{{include.text}}</p>
+        </div>
+        <div id="img_div" class="div_image">
+            {{include.img}}
+        </div>
+    </div>
+</div>
